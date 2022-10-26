@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/test-cd/static/css/main.15082886.css",
+    "main.js": "/test-cd/static/js/main.c94f9e5b.js",
+    "static/js/787.6088a753.chunk.js": "/test-cd/static/js/787.6088a753.chunk.js",
+    "index.html": "/test-cd/index.html",
+    "static/media/error-fallback.svg": "/test-cd/static/media/error-fallback.f0af6c6f720c0346108499eb623fec3d.svg",
+    "main.15082886.css.map": "/test-cd/static/css/main.15082886.css.map",
+    "main.c94f9e5b.js.map": "/test-cd/static/js/main.c94f9e5b.js.map",
+    "787.6088a753.chunk.js.map": "/test-cd/static/js/787.6088a753.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15082886.css",
+    "static/js/main.c94f9e5b.js"
+  ]
+}
