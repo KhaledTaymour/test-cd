@@ -1,0 +1,5 @@
+{
+  "arabic": ["ar", "ar-EG"],
+  "english": ["en", "en-US", "en-GB"],
+  "german": ["de", "de-at", "de-ch"]
+}

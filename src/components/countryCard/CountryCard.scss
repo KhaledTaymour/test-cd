@@ -1,0 +1,14 @@
+.country-card {
+  &__wrapper {
+    display: flex;
+    gap: 3px;
+    // height: 20px;
+    border: 1px solid #1a67d2;
+    padding: 6px;
+    background-color: #ecf0f4;
+
+    img {
+      height: 20px;
+    }
+  }
+}

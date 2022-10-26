@@ -1,0 +1,58 @@
+.currency-card {
+  &__wrapper {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    margin: 6px;
+    border: 1px solid #1a67d2;
+    border-radius: 6px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__labels {
+    display: flex;
+    width: 100%;
+  }
+  &__currency-abbreviation {
+    font-size: 28px;
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bce4fa;
+    border-top-left-radius: 6px;
+    border-right: 1px solid #1a67d2;
+  }
+  &__currency-name {
+    font-size: 20px;
+    display: flex;
+    justify-content: left;
+    padding-left: 6px;
+    align-items: center;
+    min-width: 400px;
+    background-image: linear-gradient(to right, #bce4fa, #ffffff);
+  }
+  &__countries {
+    display: flex;
+    gap: 6px;
+    margin: 6px;
+    overflow: auto;
+  }
+  &__exchange-rate {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    padding: 6px;
+    font-size: 28px;
+    min-height: 100px;
+  }
+}
