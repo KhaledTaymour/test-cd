@@ -1,0 +1,29 @@
+@import "../../styles/settings.scss";
+
+.language-drop-down {
+  &__wrapper {
+    font-size: 16px;
+
+    min-width: 200px;
+
+    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root,
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,
+    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+      color: $goerge-labs-white;
+    }
+    .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+      color: $goerge-labs-white; // arrow icon
+    }
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline,
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+      .MuiOutlinedInput-notchedOutline,
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover
+      .MuiOutlinedInput-notchedOutline {
+      border-color: $goerge-labs-white; // border
+    }
+    .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      border-top: unset;
+    }
+  }
+}

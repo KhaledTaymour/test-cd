@@ -26,6 +26,7 @@ export const useLocalization = ({
     t,
     isLoaded,
     language: i18n.language,
+    changeLanguage: i18n.changeLanguage,
     dir: i18n.dir(),
     isLtr: i18n.dir() === "ltr" ? true : false,
   };

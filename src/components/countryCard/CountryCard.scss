@@ -1,14 +1,16 @@
+@import "../../styles/settings.scss";
+
 .country-card {
   &__wrapper {
     display: flex;
     gap: 3px;
-    // height: 20px;
-    border: 1px solid #1a67d2;
+    border: 1px solid $goerge-labs-main-blue;
     padding: 6px;
-    background-color: #ecf0f4;
+    background-color: $goerge-labs-light-gray;
 
     img {
       height: 20px;
+      border-radius: 3px;
     }
   }
 }

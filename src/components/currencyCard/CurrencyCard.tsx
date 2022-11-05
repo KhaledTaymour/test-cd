@@ -1,34 +1,42 @@
 import React from "react";
 import "./CurrencyCard.scss";
 import CountryCard from "components/countryCard/CountryCard";
-import SwitzerlandFlag from "assets/flags/ch.png";
-import LiechtensteinFlag from "assets/flags/li.png";
-import NoFlag from "assets/flags/no-flag.png";
-import { normalizedDataStructure } from "components/currenciesList/CurrenciesList";
+import { useLocalization } from "hooks/useLocalization";
+import { normalizedDataStructure } from "utils/types";
+import { setCountryNameByLanguage } from "utils/languageHelper";
 
 function CurrencyCard({ data }: { data: normalizedDataStructure }) {
+  const { language } = useLocalization();
+
   return (
-    <div className="currency-card__wrapper">
+    <div className="currency-card__wrapper" data-testid="currency-card">
       <div className="currency-card__info">
         <div className="currency-card__labels">
-          <label className="currency-card__currency-abbreviation">
+          <label
+            className="currency-card__currency-abbreviation"
+            data-testid="currency-card-currency-abbreviation"
+          >
             {data.currency}
           </label>
-          <label className="currency-card__currency-name">
+          <label
+            className="currency-card__currency-name"
+            data-testid="currency-card-currency-name"
+          >
             {data.nameI18N}
           </label>
           <div className="currency-card__exchange-rate">
             <p>{`1.00 EUR`}</p>
             <p>{" = "}</p>
-            <p>{`${data.exchangeRate.buy} ${data.currency}`}</p>
+            <p data-testid="currency-card-buy-exchange-rate">{`${data.exchangeRate.buy} ${data.currency}`}</p>
           </div>
         </div>
         <div className="currency-card__countries">
           {data.countries.map((country) => (
             <CountryCard
               key={country.name.en}
-              name={country.name.en}
+              name={setCountryNameByLanguage(language, country.name)}
               flag={country.flag}
+              flagCode={country.flagCode}
             />
           ))}
         </div>

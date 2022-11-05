@@ -1,0 +1,19 @@
+@import "../../styles/settings.scss";
+
+.search-bar {
+  &__wrapper {
+    position: sticky;
+    top: 0;
+    background-color: $goerge-labs-main-gray;
+    color: $goerge-labs-white;
+    padding: 6px;
+    display: flex;
+    gap: 6px;
+
+    font-size: 22px;
+
+    input {
+      font-size: 20px;
+    }
+  }
+}

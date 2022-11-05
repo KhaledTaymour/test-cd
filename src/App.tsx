@@ -1,30 +1,21 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
-import { ErrorBoundary } from "react-error-boundary";
-import FallbackImage from "components/fallback/Fallback";
-import { I18nextProvider } from "react-i18next";
-import i18n from "i18n/config";
 import Header from "components/header/Header";
 import CurrenciesList from "components/currenciesList/CurrenciesList";
-import { QueryClient, QueryClientProvider } from "react-query";
-// import { ReactQueryDevtools } from "react-query/devtools";
-
-// Create a client
-const queryClient = new QueryClient();
+import { useLocalization } from "hooks/useLocalization";
 
 function App() {
+  const { dir } = useLocalization({});
+
   return (
-    <div className="App">
-      <ErrorBoundary FallbackComponent={FallbackImage}>
-        <I18nextProvider i18n={i18n}>
-          <QueryClientProvider client={queryClient}>
-            <Header />
-            <CurrenciesList />
-            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-          </QueryClientProvider>
-        </I18nextProvider>
-      </ErrorBoundary>
+    <div className={`App${dir === "rtl" ? " rtl" : ""}`}>
+      <Header />
+      <CurrenciesList />
     </div>
   );
 }

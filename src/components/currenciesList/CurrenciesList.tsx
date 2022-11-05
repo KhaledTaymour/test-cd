@@ -1,118 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CurrencyCard from "components/currencyCard/CurrencyCard";
 import "./CurrenciesList.scss";
-import { useQueries, useQuery } from "react-query";
-import axios from "axios";
 
-type country = {
-  flag: string;
-  name: { ar: string; de: string; en: string };
-};
-export type normalizedDataStructure = {
-  countries: country[];
-  currency: string;
-  exchangeRate: { buy: number; sell: number };
-  nameI18N: string;
-};
-
-const REACT_QUERY_IDS = {
-  CURRENCIES: "currencies",
-  COUNTRIES: "countries",
-} as const;
-
-const APIS = {
-  CURRENCIES: "https://run.mocky.io/v3/c88db14a-3128-4fbd-af74-1371c5bb0343",
-  COUNTRIES:
-    "https://restcountries.com/v3/all?fields=flags,name,currencies,translations",
-} as const;
-
-const getCurrencies = async () => {
-  const url = APIS.CURRENCIES;
-  try {
-    const res = await axios.get(url);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-const getCountries = async () => {
-  const url = APIS.COUNTRIES;
-  try {
-    const res = await axios.get(url);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+import { AppContext } from "contexts/context";
+import { useLocalization } from "hooks/useLocalization";
+import enStrings from "./locale/CurrenciesList.locale.en.json";
+import deStrings from "./locale/CurrenciesList.locale.de.json";
+import arStrings from "./locale/CurrenciesList.locale.ar.json";
+import { normalizedDataStructure } from "utils/types";
+import { useCurrencies } from "../../hooks/useCurrencies";
 
 function CurrenciesList() {
-  const [normalizedData, setNormalizedData] = useState([]);
-  const {
-    data: currenciesData,
-    isError: currenciesIsError,
-    isLoading: currenciesIsLoading,
-    // refetch: currenciesRefetch,
-  } = useQuery([REACT_QUERY_IDS.CURRENCIES], getCurrencies);
+  const { t, language } = useLocalization({ enStrings, deStrings, arStrings });
 
-  const {
-    data: countriesData,
-    isError: countriesIsError,
-    isLoading: countriesIsLoading,
-    refetch: countriesRefetch,
-  } = useQuery([REACT_QUERY_IDS.COUNTRIES], getCountries);
-
-  useEffect(() => {
-    if (!currenciesIsLoading && !countriesIsLoading) {
-      const data = currenciesData.fx.map((currencyItem: any) => {
-        let countries = countriesData.filter(
-          (country: any) => country.currencies[currencyItem.currency]
-        );
-        countries = countries.map((country: any) => ({
-          flag: country.flags[0],
-          name: {
-            en: country.name.common,
-            ar: country.translations["ara"].common,
-            de: country.translations["deu"].common,
-          },
-        }));
-
-        if (
-          currencyItem.exchangeRate?.buy &&
-          currencyItem.exchangeRate?.sell &&
-          countries.length
-        ) {
-          return {
-            currency: currencyItem.currency,
-            nameI18N: currencyItem.nameI18N,
-            exchangeRate: {
-              buy: currencyItem.exchangeRate?.buy?.toFixed(2) || 0,
-              sell: currencyItem.exchangeRate?.sell.toFixed(2) || 0,
-            },
-            countries: countries,
-          };
-        } else {
-          return null;
-        }
-      });
-      setNormalizedData(
-        data.filter(
-          (item: normalizedDataStructure) =>
-            item !== null && item.currency !== "EUR"
-        )
-      );
-    }
-
-    return () => {
-      setNormalizedData([]);
-    };
-  }, [currenciesData, countriesData, currenciesIsLoading, countriesIsLoading]);
+  const { currenciesIsLoading, countriesIsLoading, state } = useCurrencies({
+    AppContext,
+    language,
+  });
 
   return (
-    <div className="currencies-list__wrapper">
-      CurrenciesList
-      {normalizedData.map((item: normalizedDataStructure) => (
-        <CurrencyCard key={item.currency} data={item} />
-      ))}
+    <div className="currencies-list__wrapper" data-testid="currencies-list">
+      {state.filteredData.length ? (
+        state.filteredData.map((item: normalizedDataStructure) => (
+          <CurrencyCard key={item.currency} data={item} />
+        ))
+      ) : currenciesIsLoading || countriesIsLoading ? (
+        <label data-testid="currencies-list-loading-label">
+          <>{t("loading")}</>
+        </label>
+      ) : (
+        <label>
+          <>{t("noMatch")}</>
+        </label>
+      )}
     </div>
   );
 }

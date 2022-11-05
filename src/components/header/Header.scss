@@ -1,0 +1,21 @@
+@import "../../styles/settings.scss";
+
+.header {
+  &__wrapper {
+    display: unset;
+
+    width: 100%;
+    text-align: left;
+  }
+  &__label {
+    background-color: $goerge-labs-black;
+    color: $goerge-labs-white;
+    display: block;
+    padding: 6px;
+    font-size: 32px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
