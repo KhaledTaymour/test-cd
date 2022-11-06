@@ -6,24 +6,18 @@
 
     min-width: 200px;
 
-    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root,
-    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
-    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,
-    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    .MuiFormLabel-root,
+    .MuiFormLabel-root.Mui-focused,
+    .MuiInputBase-root,
+    .MuiSvgIcon-root {
       color: $goerge-labs-white;
     }
-    .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
-      color: $goerge-labs-white; // arrow icon
-    }
-    .css-1d3z3hw-MuiOutlinedInput-notchedOutline,
-    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
-      .MuiOutlinedInput-notchedOutline,
-    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover
-      .MuiOutlinedInput-notchedOutline {
-      border-color: $goerge-labs-white; // border
-    }
-    .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+
+    .MuiOutlinedInput-notchedOutline,
+    div.MuiInputBase-root:hover,
+    .Mui-focused fieldset.MuiOutlinedInput-notchedOutline {
       border-top: unset;
+      border-color: $goerge-labs-white;
     }
   }
 }
