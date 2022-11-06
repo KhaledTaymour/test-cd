@@ -19,6 +19,10 @@ This project shows the currencies exchange rate relative to Euro.
   - German
   - Arabic
 
+## Github pages url
+
+[https://khaledtaymour.github.io/fx-currencies/#/](https://khaledtaymour.github.io/fx-currencies/#/)
+
 ## To use this app
 
 1.  You can clone it : `git clone git@github.com:KhaledTaymour/fx-currencies.git`\
