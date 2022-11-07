@@ -2,7 +2,7 @@
   "name": "fx-currencies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://khaledtaymour.github.io/test-cd/",
+  "homepage": "https://khaledtaymour.github.io/fx-currencies/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
